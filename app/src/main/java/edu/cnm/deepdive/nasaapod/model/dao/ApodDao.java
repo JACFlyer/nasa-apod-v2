@@ -57,7 +57,7 @@ public interface ApodDao {
 
 
   @Query(APOD_STATS_QUERY)
-  LiveData<List<ApodWithStats>> lectWithStats();
+  LiveData<List<ApodWithStats>> selectWithStats();
 
 
   @Query("SELECT * FROM Apod WHERE date = :date")
