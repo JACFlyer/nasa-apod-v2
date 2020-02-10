@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.Date;
@@ -40,7 +41,7 @@ public class Apod {
   @ColumnInfo(name = "media_type")
   @Expose
   @SerializedName("media_type")
-  private String mediaType;
+  private MediaType mediaType;
 
   @Ignore
   @Expose
@@ -100,11 +101,11 @@ public class Apod {
   }
 
   @NonNull
-  public String getMediaType() {
+  public MediaType getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(@NonNull String mediaType) {
+  public void setMediaType(@NonNull MediaType mediaType) {
     this.mediaType = mediaType;
   }
 
@@ -133,4 +134,22 @@ public class Apod {
     this.hdUrl = hdUrl;
   }
 
+
+  public enum MediaType {
+    @SerializedName("image")
+    IMAGE,
+    @SerializedName("video")
+    VIDEO;
+
+    @TypeConverter
+    public static Integer toInteger(MediaType value) {
+      return (value != null) ? value.ordinal() : null;
+    }
+    @TypeConverter
+    public static MediaType toMEdiaType(Integer value) {
+      return (value != null) ? MediaType.values()[value] : null;
+
+    }
+
+  }
 }
