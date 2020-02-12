@@ -1,7 +1,7 @@
 package edu.cnm.deepdive.nasaapod.view;
 
 import android.content.Context;
-import android.text.format.DateFormat;  
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,14 +38,20 @@ public class ApodAdapter extends ArrayAdapter<ApodWithStats> {
     title.setText(apod.getApod().getTitle());
 
     date.setText(DateFormat.getMediumDateFormat(getContext()).format(apod.getApod().getDate()));
-    access.setText(getContext().getString(R.string.access_format, apod.getAccessCount(),
-        DateFormat.getMediumDateFormat(getContext()).format(apod.getLastAccess())));
+    String countQuantity = getContext().getResources()
+        .getQuantityString(R.plurals.access_count, apod.getAccessCount());
+
+    access.setText(getContext().getString(R.string.access_format,
+        apod.getAccessCount(),
+        DateFormat.getMediumDateFormat(getContext()).format(apod.getLastAccess()),
+        countQuantity));
     if (apod.getApod().getMediaType() == MediaType.IMAGE) {
       Picasso.get().load(apod.getApod().getUrl()).into(thumbnail);
     } else {
       thumbnail.setImageResource(R.drawable.ic_videocam);
     }
     return view;
+  }
+
 
   }
-}
