@@ -15,7 +15,7 @@
     android:adjustViewBounds="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/title"
-    app:layout_constraintHorizontal_weight="16sp"
+    app:layout_constraintHorizontal_weight="@integer/item_image_weight"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
 

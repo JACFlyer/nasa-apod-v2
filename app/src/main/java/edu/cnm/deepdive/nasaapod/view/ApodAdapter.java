@@ -12,15 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.squareup.picasso.Picasso;
 import edu.cnm.deepdive.nasaapod.R;
+import edu.cnm.deepdive.nasaapod.model.entity.Apod;
 import edu.cnm.deepdive.nasaapod.model.entity.Apod.MediaType;
 import edu.cnm.deepdive.nasaapod.model.pojo.ApodWithStats;
 import java.util.List;
 
 public class ApodAdapter extends ArrayAdapter<ApodWithStats> {
 
+  private final OnClickListener listener;
 
-  public ApodAdapter(@NonNull Context context, @NonNull List<ApodWithStats> objects) {
-    super(context, R.layout.item_apod, objects);
+  public ApodAdapter(@NonNull Context context, @NonNull List<ApodWithStats> apods,
+      OnClickListener listener) {
+    super(context, R.layout.item_apod, apods);
+    this.listener = listener; // TODO Deal with a null listener.
   }
 
   @NonNull
@@ -36,11 +40,9 @@ public class ApodAdapter extends ArrayAdapter<ApodWithStats> {
     TextView access = view.findViewById(R.id.access);
     ApodWithStats apod = getItem(position);
     title.setText(apod.getApod().getTitle());
-
     date.setText(DateFormat.getMediumDateFormat(getContext()).format(apod.getApod().getDate()));
     String countQuantity = getContext().getResources()
         .getQuantityString(R.plurals.access_count, apod.getAccessCount());
-
     access.setText(getContext().getString(R.string.access_format,
         apod.getAccessCount(),
         DateFormat.getMediumDateFormat(getContext()).format(apod.getLastAccess()),
@@ -50,8 +52,16 @@ public class ApodAdapter extends ArrayAdapter<ApodWithStats> {
     } else {
       thumbnail.setImageResource(R.drawable.ic_videocam);
     }
+    thumbnail.setContentDescription(apod.getApod().getTitle());
+    view.setOnClickListener((v) -> listener.onClick(v, apod.getApod(), position));
     return view;
   }
 
+  @FunctionalInterface
+  public interface OnClickListener {
+
+    void onClick(View view, Apod apod, int position);
 
   }
+
+}

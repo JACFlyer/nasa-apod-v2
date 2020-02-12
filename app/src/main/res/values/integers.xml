@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <integer name="toast_vertical_offset">128</integer>
+  <integer name="item_image_weight">3</integer>
+
 </resources>

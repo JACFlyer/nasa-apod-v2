@@ -35,12 +35,11 @@ public class MainActivity extends AppCompatActivity {
     setupNavigation();
     setupViewModel();
     setupCalendarPicker();
-
   }
 
   private void setupViewModel() {
     viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-    viewModel.getApod().observe(this, (apod -> calendar.setTime(apod.getDate())));
+    viewModel.getApod().observe(this, (apod) -> calendar.setTime(apod.getDate()));
   }
 
   private void setupNavigation() {
@@ -63,10 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
   public void setProgressVisibility(int visibility) {
     loading.setVisibility(visibility);
-
   }
 
-  private void setupCalendarPicker(Calendar calendar) {
+  private void setupCalendarPicker() {
     calendar = Calendar.getInstance();
     calendarFab = findViewById(R.id.calendar_fab);
     calendarFab.setOnClickListener((v) -> {
@@ -77,12 +75,5 @@ public class MainActivity extends AppCompatActivity {
       fragment.show(getSupportFragmentManager(), fragment.getClass().getName());
     });
   }
-
-
-
-
-
-
-
 
 }
