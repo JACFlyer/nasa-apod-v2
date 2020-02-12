@@ -1,7 +1,7 @@
 package edu.cnm.deepdive.nasaapod.view;
 
 import android.content.Context;
-import android.text.format.DateFormat;
+import android.text.format.DateFormat;  
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

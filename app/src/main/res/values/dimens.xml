@@ -3,4 +3,8 @@
   <dimen name="activity_horizontal_margin">16dp</dimen>
   <dimen name="activity_vertical_margin">16dp</dimen>
   <dimen name="toast_vertical_margin">64dp</dimen>
+  <dimen name="constraint_layout_padding">8dp</dimen>
+  <dimen name="thumbnail_margin_end">8dp</dimen>
+  <dimen name="title_margin_end">8dp</dimen>
+  <dimen name="title_margin_bottom">8dp</dimen>
 </resources>
