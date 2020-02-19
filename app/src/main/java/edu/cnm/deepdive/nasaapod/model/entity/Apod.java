@@ -146,7 +146,7 @@ public class Apod {
       return (value != null) ? value.ordinal() : null;
     }
     @TypeConverter
-    public static MediaType toMEdiaType(Integer value) {
+    public static MediaType toMediaType(Integer value) {
       return (value != null) ? MediaType.values()[value] : null;
 
     }
