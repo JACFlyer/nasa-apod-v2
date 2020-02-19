@@ -7,4 +7,6 @@
   <dimen name="thumbnail_margin_end">8dp</dimen>
   <dimen name="title_margin_end">8dp</dimen>
   <dimen name="title_margin_bottom">8dp</dimen>
+  <dimen name="item_apod_spacing">16sp</dimen>
+
 </resources>
